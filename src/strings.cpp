@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include "files.h"
+#include "strings.h"
 
 using namespace std;
 

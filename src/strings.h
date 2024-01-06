@@ -1,5 +1,5 @@
-#ifndef EV_UTIL_FILES_H
-#define EV_UTIL_FILES_H
+#ifndef EV_UTIL_STRINGS_H
+#define EV_UTIL_STRINGS_H
 
 #include <vector>
 #include <string>
