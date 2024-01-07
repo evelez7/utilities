@@ -18,7 +18,17 @@ vector<string> split(const string &toSplit, const string &delimiter) {
   return tokens;
 }
 
-vector<string> split(const string &toSplit, const string &delimiter, const unsigned& limit = 1) {
+vector<string> split(const string &toSplit, const string &delimiter,
+                     const unsigned &limit) {
+  vector<string> partiallySplitString;
+  for (auto elem : toSplit | views::split(delimiter) | views::take(limit))
+    partiallySplitString.push_back(string(string_view(elem)));
 
+  string rejoinedString;
+  for (auto elem : toSplit | views::split(delimiter) | views::drop(limit) |
+                       views::join_with(delimiter))
+    rejoinedString += elem;
+  partiallySplitString.push_back(rejoinedString);
+  return partiallySplitString;
 }
 } // namespace ev

@@ -9,6 +9,8 @@ using namespace std;
 
 namespace ev {
 vector<string> split(const string &toSplit, const string &delimiter);
+
+vector<string> split(const string &toSplit, const string &delimiter, const unsigned &limit);
 } // namespace ev
 
 #endif
