@@ -1,5 +1,4 @@
 project(util_test)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${CMAKE_PROJECT_NAME}_SOURCE_DIR})
 
 include(FetchContent)
 FetchContent_Declare(
@@ -11,10 +10,10 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-add_executable(util_test strings_test.cpp files_test.cpp)
-target_link_libraries(util_test GTest::gtest_main)
-target_link_libraries(util_test util)
+add_executable(util_test.exe strings_test.cpp files_test.cpp)
+target_link_libraries(util_test.exe GTest::gtest_main)
+target_link_libraries(util_test.exe util)
 
 include(GoogleTest)
-gtest_discover_tests(util_test)
+gtest_discover_tests(util_test.exe)
 

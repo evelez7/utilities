@@ -14,3 +14,4 @@ _deps
 lib/
 bin/
 util_test
+*.exe
