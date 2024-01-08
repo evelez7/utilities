@@ -28,10 +28,15 @@ TEST(StringsTest, PartialSplitCorner) {
 
 TEST(StringsTest, TrimNewline) {
   std::string testString = "one\n";
-  EXPECT_EQ(ev::trim(testString, '\n'), "one");
+  EXPECT_EQ(ev::trim(testString, "\n"), "one");
 }
 
 TEST(StringsTest, ReplaceAllInstances) {
   std::string testString = "one&&two&&three";
   EXPECT_EQ(ev::replace(testString, "&&", ".."), "one..two..three");
+}
+
+TEST(StringsTest, TrimAllWhitespaces) {
+  std::string testString = " onetwo three ";
+  EXPECT_EQ(ev::replace(testString, " ", ""), "onetwothree");
 }

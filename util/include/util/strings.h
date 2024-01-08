@@ -11,7 +11,7 @@ vector<string> split(const string &toSplit, const string &delimiter);
 
 vector<string> split(const string &toSplit, const string &delimiter, const unsigned &limit);
 
-string trim(string &stringToTrim, const char &charToFind);
+string trim(string &target, const string &toFind);
 
 string replace(string &target, const string &pattern,
                const string &replacement);

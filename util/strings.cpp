@@ -33,11 +33,11 @@ vector<string> split(const string &toSplit, const string &delimiter,
   return partiallySplitString;
 }
 
-string trim(string &stringToTrim, const char &charToTrim) {
-  auto charPos = stringToTrim.find(charToTrim);
+string trim(string &target, const string &toFind) {
+  auto charPos = target.find(toFind);
   if (charPos != string::npos)
-    return stringToTrim.erase(charPos);
-  return stringToTrim;
+    return target.erase(charPos);
+  return target;
 }
 
 string replace(string &target, const string &pattern,
