@@ -31,6 +31,11 @@ TEST(StringsTest, TrimNewline) {
   EXPECT_EQ(ev::trim(testString, "\n"), "one");
 }
 
+TEST(StringsTest, TrimUntilLimit) {
+  std::string test = ".one.two.three.";
+  EXPECT_EQ(ev::trim(test, ".", 2), "onetwo.three.");
+}
+
 TEST(StringsTest, ReplaceAllInstances) {
   std::string testString = "one&&two&&three";
   EXPECT_EQ(ev::replace(testString, "&&", ".."), "one..two..three");
@@ -39,4 +44,9 @@ TEST(StringsTest, ReplaceAllInstances) {
 TEST(StringsTest, TrimAllWhitespaces) {
   std::string testString = " onetwo three ";
   EXPECT_EQ(ev::replace(testString, " ", ""), "onetwothree");
+}
+
+TEST(StringsTest, Strip) {
+  std::string test = " one twothree fourfive ";
+  EXPECT_EQ(ev::strip(test, " "), "onetwothreefourfive");
 }

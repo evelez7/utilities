@@ -33,10 +33,13 @@ vector<string> split(const string &toSplit, const string &delimiter,
   return partiallySplitString;
 }
 
-string trim(string &target, const string &toFind) {
-  auto charPos = target.find(toFind);
-  if (charPos != string::npos)
-    return target.erase(charPos);
+string trim(string &target, const string &toFind, const unsigned &limit) {
+  for (unsigned i = 0; i < limit; ++i) {
+    auto pos = target.find(toFind);
+    if (pos == string::npos)
+      return target;
+    target.erase(pos, toFind.length());
+  }
   return target;
 }
 
@@ -45,6 +48,13 @@ string replace(string &target, const string &pattern,
   string result;
   for (auto elem :
        target | views::split(pattern) | views::join_with(replacement))
+    result += elem;
+  return result;
+}
+
+string strip(const string &target, const string &pattern) {
+  string result;
+  for (auto elem : target | views::split(pattern) | views::join)
     result += elem;
   return result;
 }
