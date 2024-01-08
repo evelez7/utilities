@@ -1,37 +1,37 @@
 #include <util/strings.h>
 #include <gtest/gtest.h>
 
-TEST(SplitTest, FullSplit) {
+TEST(StringsTest, FullSplit) {
   std::string testString = "one.two.three";
   std::vector<std::string> results{"one", "two",
                       "three"};
   EXPECT_EQ(ev::split(testString, "."), results);
 }
 
-TEST(SplitTest, PartialSplit) {
+TEST(StringsTest, PartialSplit) {
   std::string testString = "one.two.three";
   std::vector<std::string> results{"one", "two.three"};
   EXPECT_EQ(ev::split(testString, ".", 1), results);
 }
 
-TEST(SplitTest, PartialSplitTwo) {
+TEST(StringsTest, PartialSplitTwo) {
   std::string testString = "one.two.three.four";
   std::vector<std::string> results{"one", "two", "three.four"};
   EXPECT_EQ(ev::split(testString, ".", 2), results);
 }
 
-TEST(SplitTest, PartialSplitCorner) {
+TEST(StringsTest, PartialSplitCorner) {
   std::string testString = "one.two.three";
   std::vector<std::string> results{"one", "two", "three"};
   EXPECT_EQ(ev::split(testString, ".", 2), results);
 }
 
-TEST(TrimTest, TrimWhitespace) {
+TEST(StringsTest, TrimNewline) {
   std::string testString = "one\n";
   EXPECT_EQ(ev::trim(testString, '\n'), "one");
 }
 
-TEST(StringTest, ReplaceAllInstances) {
+TEST(StringsTest, ReplaceAllInstances) {
   std::string testString = "one&&two&&three";
   EXPECT_EQ(ev::replace(testString, "&&", ".."), "one..two..three");
 }
