@@ -25,3 +25,13 @@ TEST(SplitTest, PartialSplitCorner) {
   std::vector<std::string> results{"one", "two", "three"};
   EXPECT_EQ(ev::split(testString, ".", 2), results);
 }
+
+TEST(TrimTest, TrimWhitespace) {
+  std::string testString = "one\n";
+  EXPECT_EQ(ev::trim(testString, '\n'), "one");
+}
+
+TEST(StringTest, ReplaceAllInstances) {
+  std::string testString = "one&&two&&three";
+  EXPECT_EQ(ev::replace(testString, "&&", ".."), "one..two..three");
+}

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <ranges>
 #include <string>
+#include <string_view>
 
 using namespace std;
 
@@ -30,5 +31,21 @@ vector<string> split(const string &toSplit, const string &delimiter,
     rejoinedString += elem;
   partiallySplitString.push_back(rejoinedString);
   return partiallySplitString;
+}
+
+string trim(string &stringToTrim, const char &charToTrim) {
+  auto charPos = stringToTrim.find(charToTrim);
+  if (charPos != string::npos)
+    return stringToTrim.erase(charPos);
+  return stringToTrim;
+}
+
+string replace(string &target, const string &pattern,
+               const string &replacement) {
+  string result;
+  for (auto elem :
+       target | views::split(pattern) | views::join_with(replacement))
+    result += elem;
+  return result;
 }
 } // namespace ev
